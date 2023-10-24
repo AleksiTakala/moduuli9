@@ -18,18 +18,18 @@ class Auto:
     def __str__(self):
         return f'{self.rkt}, {self.hn}, {self.nopeus}, {self.kuljettu}'
 autolista = []
-matkalista = []
-for i in range(1):
-    for i in range(10):
-        i = i +1
-        nopeuss = random.randint(100,200)
-        aut = Auto("ABC-"+ str(i), nopeuss)
-        aut.kiihdytä(nopeuss)
-        aut.kulje(10)
-        autolista.append(aut)
-        aut.kuljettu += aut.kuljettu
-        matkalista.append(aut.kuljettu)
+for i in range(10):
+    auto = Auto(f'ABC-{i+1}', random.randint(100, 200))
+    autolista.append(auto)
+kilpailu = True
+while kilpailu:
+    for i in autolista:
+        i.kiihdytä(random.randint(-10, 15))
+        i.kulje(1)
+        if i.kuljettu > 10000:
+            kilpailu = False
 
-print(matkalista)
+for i in autolista:
+    print(f'{i}\n')
 
 
